@@ -8,9 +8,12 @@ class StreetGateOpener:
         self.config = configparser.ConfigParser()
         self.config.read('config.ini')
         self.gate_gpio = int(self.config['DEFAULT']['GateGpio'])
-        GPIO.cleanup()
+        self.phone_book = self.config['access']['PhoneNumbers'].split(',')
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.gate_gpio, GPIO.OUT)
+
+    def phone_number_validation(self, number):
+        return number[-10:] in self.phone_book
 
     def open_gate(self):
         GPIO.output(self.gate_gpio, GPIO.LOW)
@@ -23,7 +26,6 @@ class StreetGateOpener:
 
 if __name__ == '__main__':
     x = StreetGateOpener()
-    print(x.config['DEFAULT']['GateGpio'])
-    x.gate_gpio
+    x.open_gate()
 
 

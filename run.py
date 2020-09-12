@@ -1,0 +1,11 @@
+from sim800l import Sim800L
+from street_gate_opener import StreetGateOpener
+
+gsm_connection = Sim800L()
+gate = StreetGateOpener()
+
+while True:
+    incoming = gsm_connection.check_incoming()
+    if incoming and gate.phone_number_validation(incoming):
+        gate.open_gate()
+        print('$' * 20, '\nCALL FROM {}\n'.format(incoming), '$' * 20)
