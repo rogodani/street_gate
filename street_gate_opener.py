@@ -14,7 +14,7 @@ class StreetGateOpener:
 
     def phone_number_validation(self, number):
         print('PHONE BOOK: ', self.phone_book)
-        print('NUMBER: ', number[-10:])
+        print('NUMBER: ', number, "---", number[-10:])
         return number[-10:] in self.phone_book
 
     def open_gate(self):
