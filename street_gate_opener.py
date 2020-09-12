@@ -11,8 +11,8 @@ class StreetGateOpener:
         self.phone_book = self.config['access']['PhoneNumbers'].split(',')
 
     def phone_number_validation(self, number):
-        print('PHONE BOOK: ', self.phone_book)
-        print('NUMBER: ', number, "---", len(number), "------", number[-11:-1])
+        # print('PHONE BOOK: ', self.phone_book)
+        # print('NUMBER: ', number, "---", len(number), "------", number[-11:-1])
         return number[-11:-1] in self.phone_book
 
     def open_gate(self):
