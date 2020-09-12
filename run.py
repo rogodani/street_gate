@@ -8,5 +8,7 @@ while True:
     incoming = gsm_connection.check_incoming()
     print("-------> INCOME: ", incoming)
     if incoming and gate.phone_number_validation(incoming):
+        print('IN IF')
+        print(' - - - - > validation:', gate.phone_number_validation(incoming))
         gate.open_gate()
         print('$' * 20, '\nCALL FROM {}\n'.format(incoming), '$' * 20)
