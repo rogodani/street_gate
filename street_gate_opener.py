@@ -13,9 +13,7 @@ class StreetGateOpener:
         GPIO.setup(self.gate_gpio, GPIO.OUT)
 
     def phone_number_validation(self, number):
-        print('PHONE BOOK: ', self.phone_book)
-        print('NUMBER: ', number, "---", len(number), "------", number[-10:])
-        return number[-10:] in self.phone_book
+        return number[-11:-1] in self.phone_book
 
     def open_gate(self):
         GPIO.output(self.gate_gpio, GPIO.LOW)
