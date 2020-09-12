@@ -8,14 +8,17 @@ class StreetGateOpener:
         self.config = configparser.ConfigParser()
         self.config.read('config.ini')
         self.gate_gpio = int(self.config['DEFAULT']['GateGpio'])
+        GPIO.cleanup()
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.gate_gpio, GPIO.OUT)
 
     def open_gate(self):
         GPIO.output(self.gate_gpio, GPIO.LOW)
         sleep(2)
-        GPIO.output(self.shelf1, GPIO.HIGH)
+        GPIO.output(self.gate_gpio, GPIO.HIGH)
+        sleep(2)
         GPIO.cleanup()
+
 
 
 if __name__ == '__main__':
