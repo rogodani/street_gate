@@ -7,6 +7,7 @@ gate = StreetGateOpener()
 while True:
     incoming = gsm_connection.check_incoming()
     print("-------> INCOME: ", incoming)
+    print('-------> INCOME TYPE', type(incoming))
     if incoming and gate.phone_number_validation(incoming):
         print('IN IF')
         print(' - - - - > validation:', gate.phone_number_validation(incoming))
